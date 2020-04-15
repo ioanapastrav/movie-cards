@@ -1,0 +1,227 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.navigation {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.navItem {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 15px 50px;
+    color:#5A6E73;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navItem:hover{
+    background-color: #5A6E73;
+    color: #f1f1f1;
+    border-radius:3px;
+}
+.movieForm {
+    display: inline-block;   
+    width: 600px;
+    margin: 0 0 100px 20px;
+   
+}
+.searchLabel {
+   display:flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom:40px;
+   font-size: 15px;
+   color:#9f9f9f;
+   font-weight: 500;
+}
+
+.typeLabel {
+    display:flex;
+    align-items: center;
+    
+}
+.searchInput {
+    width:400px;
+    background-color:#f1f1f1;
+    border:none;
+    padding: 7px;
+    outline: none;
+}
+
+
+
+.movieResults{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content:flex-start;
+    justify-content: start;
+    padding:10px;
+    margin-bottom: 3px;
+    background-color: #D5DEE0;
+    
+}
+
+.movieContainer {
+    
+    display: flex;
+    flex-direction: column;
+    block-size: auto;
+    margin: 0 20px;
+    
+}
+.tooltip {
+    display:flex;
+    flex-flow: column wrap;
+    align-items: center;
+    position: absolute; 
+    background-color:rgba(95%, 95%, 95%, 0.8);
+    font-size:10px;
+    block-size: min-content;
+    padding:5px;
+    border-radius: 2px;
+    visibility: hidden;
+    
+    
+}
+
+.tooltipText{
+    margin: 0;
+    block-size: min-content;
+    
+}
+.thinText {
+    margin: 0;
+    font-weight: 400;
+}
+.noResultsMessage{
+    background-color: #f1f1f1;
+    width:300px;
+    font-family: 'Roboto', sans-serif;
+    color:#5A6E73;
+    font-size: 18px;
+    padding: 5px;
+    text-align: center;
+}
+
+.moviePoster {
+    width:150px;
+    margin-bottom: 5px;
+}
+
+
+.movieTitle {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #749198;
+    margin-block-start: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    line-height: 15px;
+    max-height: 15px;
+    max-width: 150px;
+    
+    
+}
+
+.submitButton{
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background-color: #D5DEE0;
+    padding:15px 50px;
+    font-family: 'Roboto', sans-serif;
+    color:#5A6E73;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+/*Add Movie Page*/
+#addContainer {
+    display: flex;
+    align-content: center;
+    margin-top:50px;
+    visibility: hidden;
+    position: absolute;
+    top:0;
+    left:0;
+    
+   
+}
+.errorLabel {
+    color: red;
+    margin-bottom: 40px;
+    padding: 5px;
+    list-style-type: none;
+    height: 20px;
+}
+.fas fa-times-circle {
+    font-size: 20px;
+}
+
+.fas fa-greater-than {
+    font-size: 20px;
+}
+
+.inputError {
+    outline: solid red 2px;
+}
+
+.snackBar {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    float: left;
+    width: 250px;
+    padding: 10px;
+    background-color: #F2F2F2;
+    border-radius: 3px;
+    
+}
+
+.snackBarMessage {
+    color:#FE5D5D;
+    font-weight: 600;
+}
+
+.favoritesButton {
+    position: inherit;
+    visibility: hidden;
+    
+    width: min-content;
+    padding:0;
+    border: 0;
+    outline: none;
+}
+
+.favoriteButtonStar{
+    width: 20px;
+    
+   
+}
+
+
+/* favorites container*/
+.favoriteMoviesContainer {
+    visibility: hidden;
+    
+    
+    
+}
+
+.favoriteMoviesTitle {
+    font-family: 'Roboto';
+    font-size: 18px;
+    color:darkgoldenrod;
+}
+.favoriteMovies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
