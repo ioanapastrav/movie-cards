@@ -1,79 +1,64 @@
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Classes</title>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Classes</title>
+		<script defer type="text/javascript" src="/export/bundle.js"></script>
 
-    <script type="module" src="Services/result-builder-service.js"></script>
-    <script type="module" src="Services/search-service.js"></script>
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap&subset=greek,greek-ext,latin-ext"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link href="style.css" rel="stylesheet" type="text/css" />
+	</head>
 
-    <script type="module" src="Services/create-services.js"></script>
+	<body id="body">
+		<nav class="navigation">
+			<a class="navItem" id="searchPage">Search</a>
+			<a class="navItem" id="addMoviePage">Add/Edit</a>
+			<a class="navItem" id="favoriteMoviePage">Favorites</a>
+		</nav>
+		<div id="searchContainer" class="movieForm">
+			<label class="searchLabel"> Title <input class="searchInput" id="searchTitleInput" type="search" /></label>
+			<label class="searchLabel">Year <input class="searchInput" id="searchYearInput" type="search" /></label>
+			<label class="searchLabel">Category<input class="searchInput" id="searchCategoryInput" type="search" /></label>
+			<label class="searchLabel">Rating <input class="searchInput" id="searchRatingInput" type="number" /></label>
+			<label class="searchLabel">Actors <input class="searchInput" id="searchActorsInput" type="search" /></label>
 
+			<label class="searchLabel">
+				<div></div>
+				<button id="searchButton" class="submitButton">Search</button>
+			</label>
+		</div>
+		<div id="addContainer">
+			<div class="movieForm">
+				<label id="searchLabel" class="searchLabel">Title <input class="searchInput" id="addTitleInput" type="text" placeholder="Matrix" /></label>
+				<label class="searchLabel">Year <input class="searchInput" id="addYearInput" type="text" placeholder="2000" /></label>
+				<label class="searchLabel"
+					>Category<input class="searchInput" id="addCategoryInput" type="text" placeholder="Comedy/Drama/Action..."
+				/></label>
+				<label class="searchLabel">Rating <input class="searchInput" id="addRatingInput" type="text" placeholder="1-10" /></label>
+				<label class="searchLabel"
+					>Actors <input class="searchInput" id="addActorsInput" type="text" placeholder="John Doe, Jane Doe, ..." maxlength="50"
+				/></label>
 
-
-    <script type='module' src="Controllers/validation-result.js"></script>
-    <script type="module" src='Controllers/no-empty-input-rule.js'></script>
-    <script type='module' src='Controllers/input-content-rules.js'></script>
-    <script type="module" src='Controllers/field-rules.js'></script>
-    <script type="module" src="Controllers/movie-controller.js"></script>
-    <script type="module" src='View/app-initialization-service.js'></script>
-
-    <link
-        href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap&subset=greek,greek-ext,latin-ext"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="style.css" rel="stylesheet" type="text/css">
-
-</head>
-
-<body id="body">
-    <nav class="navigation">
-        <a class="navItem" id="searchPage">Search</a>
-        <a class="navItem" id="addMoviePage">Add/Edit</a>
-        <a class="navItem" id="favoriteMoviePage">Favorites</a>
-    </nav>
-    <div id="searchContainer" class="movieForm">
-        <label class="searchLabel"> Title <input class="searchInput" id="searchTitleInput" type="search"></label>
-        <label class="searchLabel">Year <input class="searchInput" id="searchYearInput" type="search"></label>
-        <label class="searchLabel">Category<input class="searchInput" id="searchCategoryInput" type="search"></label>
-        <label class="searchLabel">Rating <input class="searchInput" id="searchRatingInput" type="number"></label>
-        <label class="searchLabel">Actors <input class="searchInput" id="searchActorsInput" type="search"></label>
-
-        <label class="searchLabel">
-            <div></div><button id="searchButton" class="submitButton">Search</button>
-        </label>
-    </div>
-    <div id="addContainer">
-        <div class="movieForm">
-            <label id='searchLabel' class="searchLabel">Title <input class="searchInput" id="addTitleInput" type="text"
-                    placeholder="Matrix"></label>
-            <label class="searchLabel">Year <input class="searchInput" id="addYearInput" type="text"
-                    placeholder="2000"></label>
-            <label class="searchLabel">Category<input class="searchInput" id="addCategoryInput" type="text"
-                    placeholder="Comedy/Drama/Action..."></label>
-            <label class="searchLabel">Rating <input class="searchInput" id="addRatingInput" type="text"
-                    placeholder="1-10"></label>
-            <label class="searchLabel">Actors <input class="searchInput" id="addActorsInput" type="text"
-                    placeholder="John Doe, Jane Doe, ..." maxlength="50"></label>
-
-            <label class="searchLabel">
-                <div></div><button class="submitButton" id="addButton">Add</button>
-            </label>
-        </div>
-        <ul id="errorForm" class="movieForm">
-            <li class="errorLabel" id='errorLabelTitle'></li>
-            <li class="errorLabel" id='errorLabelYear'></li>
-            <li class="errorLabel" id='errorLabelCategory'></li>
-            <li class="errorLabel" id='errorLabelRating'></li>
-            <li class="errorLabel" id='errorLabelActors'></li>
-        </ul>
-    </div>
-    <div class="favoriteMoviesContainer" id='favoriteMoviesContainer'>
-        <h1 class='favoriteMoviesTitle'>Your favorite movies:</h1>
-        <div class='favoriteMovies'></div>
-    </div>
-   
-
-</body>
-
+				<label class="searchLabel">
+					<div></div>
+					<button class="submitButton" id="addButton">Add</button>
+				</label>
+			</div>
+			<ul id="errorForm" class="movieForm">
+				<li class="errorLabel" id="errorLabelTitle"></li>
+				<li class="errorLabel" id="errorLabelYear"></li>
+				<li class="errorLabel" id="errorLabelCategory"></li>
+				<li class="errorLabel" id="errorLabelRating"></li>
+				<li class="errorLabel" id="errorLabelActors"></li>
+			</ul>
+		</div>
+		<div class="favoriteMoviesContainer" id="favoriteMoviesContainer">
+			<h1 class="favoriteMoviesTitle">Your favorite movies:</h1>
+			<div class="favoriteMovies"></div>
+		</div>
+	</body>
 </html>

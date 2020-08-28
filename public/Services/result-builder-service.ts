@@ -1,21 +1,20 @@
-import { TooltipServices } from "./tooltip-services.js";
-
-
-
-
+import { TooltipServices } from "./tooltip-services";
+import { Results } from "../Model/results";
 
 
 export class ResultBuilderService {
+    body:HTMLElement;
+    tooltipServices:any;
     constructor() {
-        this.body = document.getElementById('body');
+        this.body = document.body;
         this.tooltipServices = new TooltipServices();
 
 
     }
-    noResult() {
-        const body = document.getElementById('body');
+    noResult():void {
+        const body: HTMLElement = document.body;
 
-        const noResults = document.createElement('h1');
+        const noResults:HTMLHeadingElement = document.createElement('h1');
         body.appendChild(noResults);
         noResults.setAttribute('id', 'noResultsMessage');
         noResults.innerHTML = 'No movies match your search!';
@@ -23,23 +22,23 @@ export class ResultBuilderService {
 
     }
 
-    async build(titleResults, searchResults) {
-        const maxLength = this.returnMaxLength(titleResults, searchResults);
-        const body = document.getElementById('body');
-        const movieResults = document.createElement('div');
-        const containerNameDefault = "movieResults";
+    async build(titleResults:Array<Results>, searchResults: Array<Results>):Promise<void> {
+        const maxLength :any = this.returnMaxLength(titleResults, searchResults);
+        const body :HTMLElement = document.getElementById('body');
+        const movieResults :HTMLDivElement = document.createElement('div');
+        const containerNameDefault:string = "movieResults";
         body.appendChild(movieResults);
         movieResults.setAttribute('class', 'movieResults');
 
-        for (let i = 0; i < maxLength.titleMaxLenght; i++) {
-            const tooltip = await this.tooltipServices.createTooltip(titleResults[i]);
+        for (let i:number = 0; i < maxLength.titleMaxLenght; i++) {
+            const tooltip = await this.tooltipServices.createTooltipData(titleResults[i]);
             const favoritesButton = this.tooltipServices.createFavoritesButton(tooltip.movieId, false);
             console.log(favoritesButton)
             this.buildMovieCard(tooltip, favoritesButton, containerNameDefault);
 
         }
-        for (let j = 0; j < maxLength.searchResultsMaxLength; j++) {
-            const tooltip = await this.tooltipServices.createTooltip(titleResults[j]);
+        for (let j:number = 0; j < maxLength.searchResultsMaxLength; j++) {
+            const tooltip = await this.tooltipServices.createTooltipData(titleResults[j]);
             const favoritesButton = this.tooltipServices.createFavoritesButton(tooltip.movieId, false);
             this.buildMovieCard(tooltip, favoritesButton, containerNameDefault);
 
@@ -49,14 +48,14 @@ export class ResultBuilderService {
 
     }
 
-    buildMovieCard(tooltipObject, favoritesButtonObject, parentContainerName) {
+    buildMovieCard(tooltipObject:Partial<Results>, favoritesButtonObject:Partial<Results>, parentContainerName:string):void {
         console.log('build movie card');
 
-        const movieResults = document.querySelector(`.${parentContainerName}`);
-        const movieContainer = document.createElement('div');
-        const img = document.createElement('img');
-        const h1 = document.createElement('H1');
-        const movieId = tooltipObject.movieId;
+        const movieResults:HTMLElement = document.querySelector(`.${parentContainerName}`);
+        const movieContainer: HTMLDivElement = document.createElement('div');
+        const img: HTMLImageElement = document.createElement('img');
+        const h1: HTMLElement = document.createElement('H1');
+        const movieId : number = tooltipObject.id;
 
 
         movieContainer.setAttribute('class', 'movieContainer');
@@ -84,31 +83,30 @@ export class ResultBuilderService {
 
 
 
-        this.tooltipServices.initiateTooltip(tooltipObject, favoritesButtonObject);
-        const favoritesButton = document.getElementById(favoritesButtonObject.id);
+        this.tooltipServices.createTooltip(tooltipObject, favoritesButtonObject);
+        const favoritesButton: HTMLElement = document.getElementById(favoritesButtonObject.favoritesButtonId);
 
-        movieContainer.addEventListener("mouseenter", event => {
-            console.log('image mouseenter');
-            const imgRect = event.target.getBoundingClientRect();
+        movieContainer.addEventListener("mouseenter", (event:MouseEvent) => {
+            const imgRect:ClientRect = (event.target as HTMLImageElement).getBoundingClientRect();
             this.tooltipServices.showTooltip(tooltipObject, imgRect);
         });
 
-        movieContainer.addEventListener("mouseenter", e => {
-            const imgRect = event.target.getBoundingClientRect();
+        movieContainer.addEventListener("mouseenter", (e:MouseEvent) => {
+            const imgRect: ClientRect = (e.target as HTMLImageElement).getBoundingClientRect();
             this.tooltipServices.showFavoritesButton(tooltipObject, favoritesButtonObject, imgRect)
         })
 
-        favoritesButton.addEventListener('click', event => {
-            if(favoritesButtonObject.state === false){
-                favoritesButtonObject.state = true;
+        favoritesButton.addEventListener('click', (event:MouseEvent) => {
+            if(favoritesButtonObject.favoritesButtonState === false){
+                favoritesButtonObject.favoritesButtonState = true;
             } else {
-                favoritesButtonObject.state = false;
+                favoritesButtonObject.favoritesButtonState = false;
             }
             this.tooltipServices.toggleFavoritesButton(tooltipObject, favoritesButtonObject);
 
         })
         movieContainer.addEventListener("mouseleave", event => {
-            console.log('image mouseleave');
+            
             this.tooltipServices.hideTooltip(tooltipObject);
         })
         movieContainer.addEventListener("mouseleave", e => {
@@ -121,7 +119,7 @@ export class ResultBuilderService {
 
 
 
-    returnMaxLength(title, searchResults) {
+    returnMaxLength(title:Array<any>, searchResults: Array<any>):any {
         if (title.length > 10 && searchResults.length > 10) {
             return {
                 titleMaxLenght: 10,
@@ -143,7 +141,7 @@ export class ResultBuilderService {
                 searchResultsMaxLength: searchResults.length
             }
         } else if (title.length = 0) {
-            if (searchResults = 0) {
+            if (searchResults.length = 0) {
                 return {
                     titleMaxLenght: 0,
                     searchResultsMaxLength: 0
@@ -161,7 +159,7 @@ export class ResultBuilderService {
             }
 
         } else if (searchResults.length = 0) {
-            if (title.results > 20) {
+            if (title.length > 20) {
                 return {
                     titleMaxLenght: 20,
                     searchResultsMaxLength: 0

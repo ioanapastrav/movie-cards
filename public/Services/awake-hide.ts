@@ -1,26 +1,26 @@
 export class AwakeHideContainer {
     awakeAddContainer (){
-        const awakeItem = document.getElementById('addContainer');
+        const awakeItem:HTMLElement = document.getElementById('addContainer');
         return awakeItem.style.visibility = "visible";
     }
     hideAddContainer (){
-        const hideItem = document.getElementById('addContainer');
+        const hideItem: HTMLElement= document.getElementById('addContainer');
         return hideItem.style.visibility = "hidden";
     }
     awakeSearchContainer (){
-        const awakeItem = document.getElementById('searchContainer');
+        const awakeItem: HTMLElement = document.getElementById('searchContainer');
         return awakeItem.style.visibility = "visible";
     }
     hideSearchContainer (){
-        const hideItem = document.getElementById('searchContainer');
+        const hideItem: HTMLElement = document.getElementById('searchContainer');
         return hideItem.style.visibility = "hidden";
     }
     awakeFavoritesContainer (){
-        const awakeItem = document.getElementById('favoriteMoviesContainer');
+        const awakeItem: HTMLElement = document.getElementById('favoriteMoviesContainer');
         return awakeItem.style.visibility = "visible";
     }
     hideFavoritesContainer (){
-        const hideItem = document.getElementById('favoriteMoviesContainer');
+        const hideItem: HTMLElement = document.getElementById('favoriteMoviesContainer');
         return hideItem.style.visibility = "hidden";
     }
     
