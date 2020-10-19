@@ -15,45 +15,47 @@ open the browser at `http://localhost:3000`
 
 ## Project structure
 
+The project follows a MVC architecture described below.
+
 ### Model
 #### `public/Model/results.ts`
-Contains an interface that defines contents of the result object that will get passed between different functions of the app.
+The search result model.
 
 #### `public/Model/tooltip.ts`
-Contains a class that defines contents of the tooltip object that will get passed between different functions of the app.
-
-#### `public/Model/favorites-button.ts`
-Contains a class that defines contents of the favorites-button object that will get passed between different functions of the app.
+Movie tooltip model.
 
 ### Controllers
 #### `public/Controllers/movie-controller.ts`
-Contains functions that handle and build the server result when searching for a movie, clean the previous results, check localstorage for favorite movies and build the favourite movie results.
+Build the server result when searching for a movie, clean the previous results, check localstorage for favorite movies and build the favourite movie results.
 
 #### `public/Controllers/input-content-rules.ts`
-Contains functions that verify if the writen content in the search input is valid.
+Verify if the writen content in the search input is valid.
+
+#### Views
+#### `public/View/search-movies.html`
 
 ### Services
 #### `public/Services/create-services.ts`
-Contains the instances of the services of the app.
+Instantiates the services used by app.
 
 #### `public/Services/local-storage-service.ts`
-Contains functions that create, pack and unpack the movie information to and from json object, as well as adds and removes that information from localstorage.
+Serialize/deserialize information from localstorage.
 
 #### `public/Services/movie-genre-services.ts`
-Contains a class that sends a request to the server in order to get the movie genre names.
+Fetches the movie genre names.
 
 #### `public/Services/url-builder-service.ts`
-Contains a function that prepares the urls for accesing the API on themoviedb.org, acording to the search inputs completed.
+Handles url building for accessing the API on themoviedb.org.
 
 #### `public/Services/result-builder-service.ts`
-Contains functions that access the DOM elements and render the results on page.
+A view service that helps building pieces of layout during the rendering of search results. E.g. create movie cards.
 
 #### `public/Services/search-service.ts`
-Contains a function that creates a get request with the search inputs.
+Fetches search results.
 
 #### `public/Services/string-utils.ts`
-Contains a function that splits a string on the ',' symbol, in order to split the list of actors into separate names.
+String utilities.
 
 #### `public/Services/tooltip-services.ts`
-Contains functions that create tooltip object instances, access the DOM in order to render, show, hide, the tooltip, as well as create, show, hide and toggle the favorites button.
+Create tooltip object instances, access the DOM in order to render, show, hide, the tooltip, as well as create, show, hide and toggle the favorites button.
 
