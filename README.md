@@ -31,7 +31,7 @@ Build the server result when searching for a movie, clean the previous results, 
 #### `public/Controllers/input-content-rules.ts`
 Verify if the writen content in the search input is valid.
 
-#### Views
+### Views
 #### `public/View/search-movies.html`
 
 ### Services
